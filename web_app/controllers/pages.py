@@ -42,8 +42,8 @@ class send_email(base_page_controller):
         secrets = json.loads(f.read())
         f.close()
 
-        message = mail.EmailMessage(sender = "secrets['email']",
-                                    to = "secrets['email']",
+        message = mail.EmailMessage(sender = secrets['email'],
+                                    to = secrets['email'],
                                     subject = 'Message from www.womerton-farm.co.uk')
         message.reply_to = self.request.get('From')
         message.body = '\n'.join(["%s: %s" % (key, self.request.get(key)) for key in self.request.arguments()])
