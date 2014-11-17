@@ -37,7 +37,7 @@ casper.test.begin('Joining email check ' + mailBoxes, function (test) {
         mailBoxes.forEach(function checkMailBox(mailBox) {
             casper.thenOpen('http://mailinator.com/inbox.jsp?to=' + mailBox, function () {
                 var subject = this.fetchText('div .subject');
-                if (subject.indexOf("Invitation Request") > -1){ 
+                if (subject.indexOf("Message from www.womerton-farm.co.uk") > -1){ 
                     success = success + 1;
                     casper.echo(mailBox + ' got mail.', 'INFO'); // printed in green
                 } else {
