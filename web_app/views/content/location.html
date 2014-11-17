@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block image %}CaerCaradoc.jpg{% endblock %}
+{% block caption %}Caer Caradoc from Womerton Farm{% endblock %}
+{% block content %}
+<h1>Location</h1>
+<div align="center" id="map" style="width: 350px; height: 260px">
+</div>
+<p>Womerton Farm, All Stretton, Church Stretton, Shropshire, SY6 6LJ</p>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/js/jquery-gomap-1.3.2.js"></script>
+<script type="text/javascript" src="/js/google-map.js"></script>
+{% endblock %}

@@ -1,0 +1,62 @@
+﻿{% set navigation_bar = [
+    ('/', 'home', 'Womerton Bunkhouse'),
+    ('/location', 'location', 'Location'),
+    ('/accommodation', 'accommodation', 'Accommodation'),
+    ('/gallery/0', 'gallery', 'Gallery'),
+    ('/prices', 'prices', 'Prices'),
+    ('/comments', 'comments', 'Comments'),
+    ('/contact', 'contact', 'Contact'),
+] -%}
+{% set active_page = active_page|default('home') -%}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Womerton - {{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" media="screen">
+</head>
+<body>
+	<table align="center">
+		<tbody>
+			<tr>
+				<td>
+					<table align="center" width="790px">
+						<tr align="right">
+							<td height="38" class="BannerBox">
+								{% for href, id, caption in navigation_bar %}
+									<a{% if id == active_page %} class="selected"{% endif %} href="{{ href|e }}">{{ caption|e }}</a>
+								{% endfor %}
+							</td>
+						</tr>
+					</table>
+			</tr>
+			<tr>
+				<td>
+					<table width="790px">
+						<tr>
+							<td id="main" valign="top" class="TextBox" width="50%">
+								{% block content %} CONTENT {% endblock %}
+							</td> 
+							<td id="image" valign="top" align="right" class="PhotoBox" width="50%">
+								<img src="/images/{% block image %}{% endblock %}" alt="Picture">
+    							<p align="center">{% block caption %}{% endblock %}</p>
+							</td> 
+						</tr>
+						<tr>
+							<td colspan="2" valign="top" class="TextBox">To book
+								telephone 01694 751260</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-7367261-1', 'womerton-farm.co.uk');
+	ga('send', 'pageview');
+	</script>
+</body>

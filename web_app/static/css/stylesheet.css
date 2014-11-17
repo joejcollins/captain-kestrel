@@ -1,0 +1,73 @@
+body {
+	background-color: #DEDECA;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	margin: 1px;
+	border-style: none;
+}
+
+body, td, th {
+	color: #666633;
+}
+
+h1, h2 {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
+	color: #663300;
+}
+
+h3, h4, h5, h6 {
+	color: #996633;
+}
+
+.BannerBox{
+	width: 100%;
+	border:1px solid #9DAFC6;
+	background : url(/images/Banner.jpg) no-repeat;
+	padding-right : 10px;
+}
+
+.BannerBox a{
+	padding-left: 5px;
+	margin-left: 5px;
+	border-left:1px solid #000000
+}
+
+.BannerBox a:first-child {
+	border-left:none
+}
+
+.BannerBox a.selected{
+	font-weight:bold;
+}
+
+.TextBox{
+	border:1px solid #9DAFC6;
+	padding:1ex;
+	background-color: #DEDEDE;
+}
+
+.PhotoBox{
+	width: 400px;
+	font-family: Comic Sans MS, Monotype Corsiva;
+	color: #000000;
+	border:1px solid #9DAFC6;
+	padding:5px;
+	background-color:#FFF;
+	text-align : center;
+}
+
+.ThumbBox{
+	border:1px solid #9DAFC6;
+	padding:3px;
+	background-color:#FFF;
+	text-align : center;
+	font-family: Comic Sans MS, Monotype Corsiva;
+	color: #000000;
+}
+
+.ThumbCaption{
+	text-align: center;
+	font-size: smaller;
+}

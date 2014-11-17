@@ -1,0 +1,43 @@
+application: womerton-farm
+version: 1  # Alternate, in case of mistakes
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: latest
+
+handlers:
+
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt 
+  
+# Icons
+- url: /favicon.ico
+  static_files: static/ico/favicon.ico
+  upload: static/ico/favicon.ico 
+
+- url: /ico/(.*) 
+  static_files: static/ico/\1 
+  upload: static/ico/(.*) 
+
+# Images
+- url: /images/(.*) 
+  static_files: static/img/\1 
+  upload: static/img/(.*) 
+
+# Style Sheets
+- url: /css/(.*) 
+  static_files: static/css/\1 
+  upload: static/css/(.*) 
+
+# JavaScript
+- url: /js/(.*) 
+  static_files: static/js/\1 
+  upload: static/js/(.*) 
+
+- url: .*
+  script: main.wsgi_app
+  
