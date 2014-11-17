@@ -32,7 +32,7 @@ class home(base_page_controller):
         template_values = {'title': 'Home'}
         template = config.jinja_environment.get_template('content/home.html')
         self.response.out.write(template.render(template_values))    
-
+ 
 '''
 Send the email
 '''

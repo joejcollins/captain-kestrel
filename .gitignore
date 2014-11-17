@@ -1,4 +1,4 @@
-*.cmd
+production_deploy.cmd
 password.txt
 secrets.json
 *.sublime-workspace
