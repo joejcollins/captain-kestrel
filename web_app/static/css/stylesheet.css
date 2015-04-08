@@ -5,7 +5,12 @@ body {
 	border-style: none;
 }
 
-body, td, th {
+body {
+	color: #666633;
+	padding-top: 70px;
+}
+
+td, th {
 	color: #666633;
 }
 
@@ -42,18 +47,19 @@ h3, h4, h5, h6 {
 	font-weight:bold;
 }
 
-.TextBox{
+.text-box{
+    width: 100%;
 	border:1px solid #9DAFC6;
-	padding:1ex;
+	padding:2ex;
 	background-color: #DEDEDE;
 }
 
-.PhotoBox{
-	width: 400px;
+.photo-box{
+	width: 100%;
 	font-family: Comic Sans MS, Monotype Corsiva;
 	color: #000000;
 	border:1px solid #9DAFC6;
-	padding:5px;
+	padding:2ex;
 	background-color:#FFF;
 	text-align : center;
 }
@@ -67,7 +73,7 @@ h3, h4, h5, h6 {
 	color: #000000;
 }
 
-.ThumbCaption{
-	text-align: center;
-	font-size: smaller;
+.row {
+    display: table;
 }
+
