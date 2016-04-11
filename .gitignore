@@ -6,6 +6,8 @@ secrets.json
 .settings/
 *.suo
 *.user
+.c9
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
