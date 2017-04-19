@@ -10,9 +10,19 @@ libraries:
 
 handlers:
 
+# Temporary for testing
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt 
+  
+# Fonts
+- url: /fonts/(.*) 
+  static_files: static/fonts/\1 
+  upload: static/fonts/(.*) 
   
 # Icons
 - url: /favicon.ico
@@ -28,15 +38,16 @@ handlers:
   static_files: static/img/\1 
   upload: static/img/(.*) 
 
+# JavaScript
+- url: /js/(.*) 
+  static_files: static/js/\1 
+  upload: static/js/(.*) 
+  
 # Style Sheets
 - url: /css/(.*) 
   static_files: static/css/\1 
   upload: static/css/(.*) 
 
-# JavaScript
-- url: /js/(.*) 
-  static_files: static/js/\1 
-  upload: static/js/(.*) 
 
 - url: .*
   script: main.wsgi_app
