@@ -2,7 +2,7 @@
     ('/location', 'location', 'Location'),
     ('/accommodation', 'accommodation', 'Accommodation'),
     ('/gallery', 'gallery', 'Gallery'),
-    ('/prices', 'prices', 'Prices'),
+    ('/prices', 'prices', 'Tariff'),
     ('/contact', 'contact', 'Contact'),
 ] -%}
 {% set active_page = active_page|default('home') -%}
@@ -54,7 +54,7 @@
                     {% block content %} CONTENT {% endblock %}
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 hidden-sm hidden-xs">
                     <div id="image" class="photo-box">
                         <img src="/images/{% block image %}{% endblock %}" alt="Picture">
                         <p align="center">{% block caption %}{% endblock %}</p>

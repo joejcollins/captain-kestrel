@@ -17,3 +17,27 @@ html, body {
 #footer {
   height: 50px;
 }
+
+/* Instant */
+.photo-box{
+	width: 420px;
+	font-family: Comic Sans MS, Monotype Corsiva;
+	color: #000000;
+	border:1px solid #9DAFC6;
+	padding:5px;
+	background-color:#FFF;
+	text-align : center;
+}
+
+/* Carousel with Thumbs */
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+.thumbnail {
+    padding: 0;
+}
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+}
