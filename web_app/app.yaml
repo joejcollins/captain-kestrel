@@ -1,5 +1,4 @@
 application: womerton-farm
-version: 1  # Alternate, in case of mistakes
 runtime: python27
 api_version: 1
 threadsafe: true

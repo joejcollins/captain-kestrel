@@ -1,13 +1,9 @@
-.idea/
-_*.cmd
-password.txt
 secrets.json
 *.sublime-workspace
 .settings/
 *.suo
 *.user
 .c9
-.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
