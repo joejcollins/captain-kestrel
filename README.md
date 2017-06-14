@@ -6,7 +6,7 @@ To run on Cloud9 (https://c9.io) use:
 
     ```sh python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
 
-Then to view go to [http://womertonfarm.joejcollins.c9.io/](http://womertonfarm.joejcollins.c9.io/```).
+Then to view go to http://womertonfarm.joejcollins.c9.io/.
 
 # Todo
 
