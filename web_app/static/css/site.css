@@ -1,0 +1,7 @@
+body { 
+    padding-top: 50px; 
+}
+
+.navbar-inverse{
+  background-image: url("/images/Banner.jpg");
+}
