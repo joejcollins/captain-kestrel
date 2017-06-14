@@ -75,24 +75,3 @@ class template(base_page_controller):
         template = config.jinja_environment.get_template('content/' + path + '.html')
         self.response.out.write(template.render(template_values))   
 
-'''
-Show the a gallery item
-'''
-class gallery_item(base_page_controller):
-    def get(self, item): 
-        gallery_items = [['BBQ.jpg','Enjoy a BBQ on the deck'],
-                         ['Entrance.jpg', 'Come inside'],
-                         ['Lounge.jpg', 'Relax in the lounge'],
-                         ['Kitchen.jpg', 'Fully equipped kitchen'],
-                         ['BreakfastBar.jpg', 'Plenty of seating at the breakfast bar'],
-                         ['Wifi.jpg', 'Free WiFi Internet access'],
-                         ['Shower.jpg', 'Two wet rooms with showers'],
-                         ['Bunks.jpg', 'Six bunks and two sofa beds'],
-                         ['PressureWash.jpg', 'Pressure Washer Available']]
-        index = int(item)
-        template_values = {'title': 'Gallery',
-                           'active_page': 'gallery',
-                           'caption': gallery_items[index][1],
-                           'image': gallery_items[index][0]}
-        template = config.jinja_environment.get_template('gallery/item.html')
-        self.response.out.write(template.render(template_values))   

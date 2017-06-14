@@ -1,7 +1,7 @@
 ﻿{% set navigation_bar = [
     ('/location', 'location', 'Location'),
     ('/accommodation', 'accommodation', 'Accommodation'),
-    ('/gallery/0', 'gallery', 'Gallery'),
+    ('/gallery', 'gallery', 'Gallery'),
     ('/prices', 'prices', 'Prices'),
     ('/contact', 'contact', 'Contact'),
 ] -%}
@@ -24,48 +24,49 @@
     <link rel="stylesheet" type="text/css" href="/css/site.css" media="screen">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div id="wrap">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Womerton Bunkhouse</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    {% for href, id, caption in navigation_bar %}
+                        <li{% if id == active_page %} class="active"{% endif %}>
+                            <a href="{{ href|e }}">{{ caption|e }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Womerton Bunkhouse</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                {% for href, id, caption in navigation_bar %}
-                    <li{% if id == active_page %} class="active"{% endif %}>
-                        <a href="{{ href|e }}">{{ caption|e }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="text-box">
-                {% block content %} CONTENT {% endblock %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-box">
+                    {% block content %} CONTENT {% endblock %}
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div id="image" class="photo-box">
-                    <img src="/images/{% block image %}{% endblock %}" alt="Picture">
-                    <p align="center">{% block caption %}{% endblock %}</p>
+                <div class="col-md-6">
+                    <div id="image" class="photo-box">
+                        <img src="/images/{% block image %}{% endblock %}" alt="Picture">
+                        <p align="center">{% block caption %}{% endblock %}</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="pull-right">
-                To book telephone 01694 751260
-            </div>
-        </footer>
+    </div>
+    <div id="footer">
+        <div class="container">
+            To book telephone 01694 751260
+        </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
