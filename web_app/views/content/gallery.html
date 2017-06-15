@@ -5,12 +5,10 @@
         <!-- Bottom switcher of slider -->
         <ul class="hide-bullets">
             <li class="col-sm-3">
-                <a class="thumbnail" id="carousel-selector-0">
-                    <img src="http://placehold.it/150x150&text=zero">
-                </a>
+                <a class="thumbnail" id="carousel-selector-0"><img src="/images/field.jpg"></a>
             </li>
             <li class="col-sm-3">
-                <a class="thumbnail" id="carousel-selector-1"><img src="http://placehold.it/150x150&text=1"></a>
+                <a class="thumbnail" id="carousel-selector-1"><img src="/images/main_house.jpg"></a>
             </li>
             <li class="col-sm-3">
                 <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/150x150&text=2"></a>
@@ -44,10 +42,10 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item" data-slide-number="0">
-                                <img src="http://placehold.it/470x480&text=zero"></div>
+                                <img src="/images/field.jpg"></div>
 
                             <div class="item" data-slide-number="1">
-                                <img src="http://placehold.it/470x480&text=1"></div>
+                                <img src="/images/main_house.jpg"></div>
 
                             <div class="item" data-slide-number="2">
                                 <img src="http://placehold.it/470x480&text=2"></div>
@@ -84,4 +82,30 @@
     </div>
     <!--/Slider-->
 </div>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+        $('#myCarousel').carousel({
+                interval: 5000
+        });
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click(function () {
+        var id_selector = $(this).attr("id");
+        try {
+            var id = /-(\d+)$/.exec(id_selector)[1];
+            console.log(id_selector, id);
+            jQuery('#myCarousel').carousel(parseInt(id));
+        } catch (e) {
+            console.log('Regex failed!', e);
+        }
+    });
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                    var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+});
+</script>
 {% endblock %}

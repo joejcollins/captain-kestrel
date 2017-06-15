@@ -18,7 +18,7 @@ html, body {
   height: 60px;
 }
 
-/* Instant */
+/* Polaroid photo box */
 .photo-box{
 	width: 420px;
 	font-family: Comic Sans MS, Monotype Corsiva;
@@ -28,6 +28,7 @@ html, body {
 	background-color:#FFF;
 	text-align : center;
 }
+
 
 /* Carousel with Thumbs */
 .hide-bullets {

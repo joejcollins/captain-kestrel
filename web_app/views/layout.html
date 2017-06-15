@@ -48,7 +48,7 @@
             </div>
         </nav>
         <div class="container">
-            {% block content %} CONTENT {% endblock %}
+            {% block content %}{% endblock %}
          </div>
     </div>
     <div id="footer">
@@ -68,5 +68,6 @@
         ga('create', 'UA-7367261-1', 'womerton-farm.co.uk');
         ga('send', 'pageview');
 	</script>
+    {% block script %}{% endblock %}
   </body>
 </html>

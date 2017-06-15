@@ -19,7 +19,7 @@ handlers:
   upload: static/robots.txt 
   
 # Fonts
-- url: /fonts/(.*) 
+- url: /fonts/bootstrap/(.*) 
   static_files: static/fonts/\1 
   upload: static/fonts/(.*) 
   
@@ -46,7 +46,6 @@ handlers:
 - url: /css/(.*) 
   static_files: static/css/\1 
   upload: static/css/(.*) 
-
 
 - url: .*
   script: main.wsgi_app
