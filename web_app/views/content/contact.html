@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "text_and_image.html" %}
 {% block image %}FarmGate.jpg{% endblock %}
 {% block caption %}Womerton Farm Gate{% endblock %}
-{% block content %}
+{% block text %}
 <h1>Send a Message</h1>
 <form id="Contact_Form" name="Contact_Form" onsubmit="JavaScript:return validateForm(this);"
 action="/send" method="post">

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="text-box">
+        {% block text %}{% endblock %}
+        </div>
+    </div>
+    <div class="col-md-6 hidden-sm hidden-xs">
+        <div id="image" class="photo-box">
+            <img src="/images/{% block image %}{% endblock %}" alt="Picture">
+            <p align="center">{% block caption %}{% endblock %}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

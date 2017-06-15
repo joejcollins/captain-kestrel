@@ -48,20 +48,8 @@
             </div>
         </nav>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="text-box">
-                    {% block content %} CONTENT {% endblock %}
-                    </div>
-                </div>
-                <div class="col-md-6 hidden-sm hidden-xs">
-                    <div id="image" class="photo-box">
-                        <img src="/images/{% block image %}{% endblock %}" alt="Picture">
-                        <p align="center">{% block caption %}{% endblock %}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% block content %} CONTENT {% endblock %}
+         </div>
     </div>
     <div id="footer">
         <div class="container">
