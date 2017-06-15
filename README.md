@@ -9,7 +9,5 @@ To run on Cloud9 (https://c9.io) use:
 
 # Todo
 
-* Heirachical templates for the gallery
 * Gallery
 * Installable
-* Map
