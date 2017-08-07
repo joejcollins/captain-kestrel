@@ -10,3 +10,12 @@
 To run on Cloud9 (https://c9.io) use:
 
     ```sh python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
+
+## Install GAE on C9
+
+* Alt-T
+* cd ..
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.57.zip
+* unzip google_appengine_1.9.57.zip
+* rm google_appengine_1.9.57.zip 
+* 
