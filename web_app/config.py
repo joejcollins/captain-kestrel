@@ -1,3 +1,4 @@
+''' Configuration settings '''
 import os
 import jinja2
 
