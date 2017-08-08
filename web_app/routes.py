@@ -1,4 +1,4 @@
-from controllers import pages
+import pages
 
 wsgi_routes = [
     (r'/', pages.home),

@@ -1,15 +1,16 @@
-import webapp2
 import logging
+import webapp2
 import config
 import re
 import json
-import settings
+import models
 from google.appengine.api import mail
 
 '''
 Base controller to deal with 500 errors
 '''
 class base_page_controller(webapp2.RequestHandler):
+    """ Base pag controller """
     def handle_exception(self, exception, debug):
         # Log the error.
         logging.exception(exception)
@@ -39,7 +40,7 @@ Send the email
 '''
 class send_email(base_page_controller):
     def post(self):
-        email = settings.Settings.get('EMAIL')
+        email = models.Settings.get('EMAIL')
         message = mail.EmailMessage(sender = email,
                                     to = email,
                                     subject = 'Message from www.womerton-farm.co.uk')
