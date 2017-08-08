@@ -3,6 +3,7 @@ import logging
 import config
 import re
 import json
+import settings
 from google.appengine.api import mail
 
 '''
@@ -38,12 +39,9 @@ Send the email
 '''
 class send_email(base_page_controller):
     def post(self):
-        f = open('secrets.json', 'r')
-        secrets = json.loads(f.read())
-        f.close()
-
-        message = mail.EmailMessage(sender = secrets['email'],
-                                    to = secrets['email'],
+        email = settings.Settings.get('EMAIL')
+        message = mail.EmailMessage(sender = email,
+                                    to = email,
                                     subject = 'Message from www.womerton-farm.co.uk')
         message.reply_to = self.request.get('From')
         message.body = '\n'.join(["%s: %s" % (key, self.request.get(key)) for key in self.request.arguments()])
