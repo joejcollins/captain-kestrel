@@ -9,16 +9,16 @@
 
 To run on Cloud9 (https://c9.io) use:
 
-    ```python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
+    ```python ./google_appengine/dev_appserver.py ./environment/web_app/ --host=0.0.0.0  ```
     
 To run on Cloud9 with access to the admin interface use:
     
-    ```python ../google_appengine/dev_appserver.py ../workspace/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081```
+    ```python ../google_appengine/dev_appserver.py ../environment/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081```
 
 ## Install GAE on C9
 
 * Alt-T
 * cd ..
-* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.57.zip
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.63.zip
 * unzip google_appengine_1.9.57.zip
 * rm google_appengine_1.9.57.zip 
