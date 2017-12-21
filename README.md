@@ -7,18 +7,19 @@
 * Colour scheme based on \web_app\static\img\wrekin_beyond.jpg using http://www.lavishbootstrap.com/
 * jinja2 templating engine http://jinja.pocoo.org/
 
-To run on Cloud9 (https://c9.io) use:
+To run on Cloud9 use:
 
-    ```python ./google_appengine/dev_appserver.py ./environment/web_app/ --host=0.0.0.0  ```
+    ``` python ../google_appengine/dev_appserver.py ./web_app/ --enable_host_checking=false ```
     
 To run on Cloud9 with access to the admin interface use:
     
-    ```python ../google_appengine/dev_appserver.py ../environment/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081```
+    ``` python ../google_appengine/dev_appserver.py ./web_app/ --enable_host_checking=false --admin_port=8081 ```
 
-## Install GAE on C9
+## Install or Update GAE on C9
 
 * Alt-T
 * cd ..
-* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.63.zip
-* unzip google_appengine_1.9.57.zip
-* rm google_appengine_1.9.57.zip 
+* rm -r google_appengine
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.65.zip
+* unzip google_appengine_1.9.65.zip
+* rm google_appengine_1.9.65.zip 
