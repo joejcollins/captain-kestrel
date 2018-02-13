@@ -1,0 +1,19 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Tests for Womerton Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --timeout 10000 --slow 2000 ./runner.js tests/test.js"
+  },
+  "author": "Joe J Collins",
+  "license": "MIT",
+  "dependencies": {
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.0",
+    "puppeteer": "^1.0.0",
+    "yargs": "^11.0.0"
+  }
+}
