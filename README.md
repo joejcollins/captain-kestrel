@@ -1,13 +1,33 @@
 # Womerton Farm Website
 
-Colour scheme from http://www.lavishbootstrap.com/
-Uses jinja2 templating engine http://jinja.pocoo.org/
+## Stack
 
-To run on Cloud9 (https://c9.io) use:
+Not on Github Pages because the GitHub repo is public, all its assets are public.  There is no option for setting hidden variables for the email address or reCapture.
 
-    ```sh python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
+* Python 2.7 on the Google App Engine https://cloud.google.com/appengine/docs/standard/python/download
+* Bootstrap v3.3.7 http://getbootstrap.com
+* Colour scheme based on \web_app\static\img\wrekin_beyond.jpg using http://www.lavishbootstrap.com/
+* jinja2 templating engine http://jinja.pocoo.org/
 
-# Todo
+To run on Cloud9 use:
 
-* Gallery
-* Installable
+    ``` python ../google_appengine/dev_appserver.py ./web_app/ --enable_host_checking=false ```
+    
+To run on Cloud9 with access to the admin interface use:
+    
+    ``` python ../google_appengine/dev_appserver.py ./web_app/ --enable_host_checking=false --admin_port=8081 ```
+
+## Install or Update GAE on C9
+
+* Alt-T
+* cd ..
+* rm -r google_appengine
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.65.zip
+* unzip google_appengine_1.9.65.zip
+* rm google_appengine_1.9.65.zip 
+
+## Run tests
+
+* cd puppeteer_test
+* npm install
+* npm test
