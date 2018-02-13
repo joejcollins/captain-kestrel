@@ -3,6 +3,7 @@
     constructor (browser, options) {
         this.browser = browser;
         this.options = options;
+        this.pageH1Text = "Send a Message";
         this.submitButtonLocator = 'form input[type="submit"]';
         var htmlPage = "/contact";
         this.pageUrl = options.appUrl + htmlPage;
@@ -15,12 +16,12 @@
     }; 
 
     async awaitH1() {
-        await this.page.waitForSelector('H1');
+        await this.page.waitForSelector('h1');
     };
 
     async getH1Content() {
         return await this.page.evaluate(() => {
-            return document.querySelector("H1").innerText;
+            return document.querySelector("h1").innerText;
         });
     };  
 
@@ -29,13 +30,7 @@
     }; 
 
 
-    // Are you on the right page?
-    async isPageRight(){
-        casper.waitForSelector("#footer", function () {
-            casper.test.assertUrlMatch('/contact', 'On the send mail page.');
-            casper.test.assertExists('form', 'A form has been found on the page.');
-        });
-    };
+
 
 
     // // Send email
