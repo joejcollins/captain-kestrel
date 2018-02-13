@@ -25,3 +25,9 @@ To run on Cloud9 with access to the admin interface use:
 * wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.65.zip
 * unzip google_appengine_1.9.65.zip
 * rm google_appengine_1.9.65.zip 
+
+## Run tests
+
+* cd puppeteer_test
+* npm install
+* npm test
