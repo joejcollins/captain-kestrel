@@ -2,7 +2,7 @@ const args = require('yargs-parser')(process.argv.slice(2));
 
 module.exports =  {
 
-  appUrl: args.appurl ? args.appurl : 'http://localhost:8080',
+  appUrl: args.appurl ? args.appurl : 'http://www.womerton-farm.co.uk',
 
   puppeteer: {
       headless: args.show ? false : true, 
