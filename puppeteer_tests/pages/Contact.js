@@ -1,18 +1,18 @@
-﻿class ContactPage{
+﻿const BasePage  = require('../pages/BasePage');
+
+class ContactPage extends BasePage {
 
     constructor (browser, options) {
-        this.browser = browser;
-        this.options = options;
+        super(browser, options);
+        super.htmlPage = "/contact";
         this.pageH1Text = "Send a Message";
         this.submitButtonLocator = 'form input[type="submit"]';
-        var htmlPage = "/contact";
-        this.pageUrl = options.appUrl + htmlPage;
     };
 
     async visit() {
-        //console.log(this.pageUrl); 
+        console.log(super.pageUrl); 
         this.page = await this.browser.newPage(); 
-        await this.page.goto(this.pageUrl); 
+        await this.page.goto(super.pageUrl); 
     }; 
 
     async awaitH1() {

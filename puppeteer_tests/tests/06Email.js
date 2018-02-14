@@ -1,9 +1,9 @@
-
+"use strict";
 const { test } = require('../browser');
 const contactPage  = require('../pages/Contact');
 var assert = require('assert');
 
-describe('When on the contact pages', () => {
+describe('On the contact page', () => {
 
     let ContactPage;
 

@@ -1,0 +1,22 @@
+{
+	"version": "0.1.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Mocha Tests",
+			"program": "${workspaceFolder}/puppeteer_tests/node_modules/mocha/bin/_mocha",
+			"args": [
+				"-u",
+				"tdd",
+				"--timeout",
+				"10000",
+				"--slow",
+				"9000",
+				"${workspaceFolder}/puppeteer_tests/runner.js",
+				"${workspaceFolder}/puppeteer_tests/tests"
+			],
+			"internalConsoleOptions": "openOnSessionStart"
+		}
+	]
+}
