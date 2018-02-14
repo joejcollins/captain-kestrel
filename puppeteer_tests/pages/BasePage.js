@@ -5,8 +5,11 @@ class BasePage{
         this.options = options;
         this.htmlPage = "";
         this.pageH1Text = "";
-        this.pageUrl = options.appUrl + this.htmlPage;
     };
+
+    get pageUrl(){
+        return this.options.appUrl + this.htmlPage;
+    }
 
     async visit() {
         this.page = await this.browser.newPage(); 

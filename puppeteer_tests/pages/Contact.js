@@ -10,7 +10,7 @@ class ContactPage extends BasePage {
     };
 
     async visit() {
-        console.log(super.pageUrl); 
+        //console.log(super.pageUrl); 
         this.page = await this.browser.newPage(); 
         await this.page.goto(super.pageUrl); 
     }; 
