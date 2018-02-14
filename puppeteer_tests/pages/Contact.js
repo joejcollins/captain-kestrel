@@ -6,6 +6,12 @@ class ContactPage extends BasePage {
         super(browser, options);
         super.htmlPage = "/contact";
         this.pageH1Text = "Send a Message";
+        this.messageLocator = 'textarea[id="Message"]';
+        this.messageErrorLocator = 'span[id="MessageError"]';
+        this.messageErrorText = 'please enter a message';
+        this.emailLocator = 'input[id="From"]';
+        this.emailErrorLocator = 'span[id="FromError"]';
+        this.emailErrorText = 'please enter an email';
         this.submitButtonLocator = 'form input[type="submit"]';
     };
 
@@ -25,13 +31,40 @@ class ContactPage extends BasePage {
         });
     };  
 
+    async isMessageErrorShown() {
+        var message = await this.page.evaluate((selector) => {
+            return document.querySelector(selector).innerText;
+        }, this.messageErrorLocator);
+
+        return message.includes(this.messageErrorText);
+    };
+
+    async fillMessage(message) {
+        await this.clearForm();
+        await this.page.type(this.messageLocator, message);
+    };
+
+
+    async isEmailErrorShown() {
+        var message = await this.page.evaluate((selector) => {
+            return document.querySelector(selector).innerText;
+        }, this.emailErrorLocator);
+
+        return message.includes(this.emailErrorText);
+    };
+
+    async clearForm() {
+        await this.page.evaluate((locator) => {
+            document.querySelector(locator).value = '';
+        }, this.messageLocator);
+        await this.page.evaluate((locator) => {
+            document.querySelector(locator).value = '';
+        }, this.emailLocator);
+    };
+
     async submitTheForm () {
         await this.page.click(this.submitButtonLocator);
     }; 
-
-
-
-
 
     // // Send email
     // this.sendEmail = function (emailAddress) {
@@ -49,13 +82,6 @@ class ContactPage extends BasePage {
     //             "textarea[name = Message]": 'Test message, ignore.',
     //             "input[name = From]": emailAddress,
     //         }, false);
-    //     });
-    // };
-
-    // // Click on the submit button
-    // this.submitForm = function () {
-    //     casper.then(function () {
-    //         casper.click('form input[type="submit"]', 'Send button clicked.');
     //     });
     // };
 

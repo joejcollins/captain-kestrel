@@ -1,17 +1,33 @@
 "use strict";
 const { test } = require('../browser');
-const contactPage  = require('../pages/Contact');
+const ContactPage  = require('../pages/Contact');
 var assert = require('assert');
 
 describe('On the contact page', () => {
 
-    let ContactPage;
+    let contactPage;
 
     it('it shows me the title', test(async (browser, opts) => {
-        ContactPage = new contactPage(browser, opts);
-        await ContactPage.visit();
-        await ContactPage.awaitH1();
-        const innerText = await ContactPage.getH1Content();   
-        assert.equal(innerText, ContactPage.pageH1Text);
+        contactPage = new ContactPage(browser, opts);
+        await contactPage.visit();
+        await contactPage.awaitH1();
+        const innerText = await contactPage.getH1Content();   
+        assert.equal(innerText, contactPage.pageH1Text);
     }));
+
+    it('but when you submit empty fields it theres a no message error', test(async (browser, opts) => {
+        await contactPage.submitTheForm();
+        const messageErrorShown = await contactPage.isMessageErrorShown();
+        assert.ok(messageErrorShown);
+    }));
+
+    it('if the message is filled, theres an email message error', test(async (browser, opts) => {
+        await contactPage.fillMessage("Test Message");
+        await contactPage.submitTheForm();
+        const messageErrorShown = await contactPage.isMessageErrorShown();
+        assert.ok(!messageErrorShown);
+        const emailErrorShown = await contactPage.isEmailErrorShown();
+        assert.ok(emailErrorShown);
+    }));
+
 });
