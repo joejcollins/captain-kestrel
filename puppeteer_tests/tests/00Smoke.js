@@ -1,15 +1,15 @@
 "use strict";
 const { test } = require('../browser');
 const BasePage  = require('../pages/BasePage');
+const Menu = require('../pages/Menu')
 var assert = require('assert');
 
 
 
 let page = new BasePage(browser, opts);
+let menu = new Menu(tab);
 
-//let menu = new menu(tab);
-
-// describe('On the home page', () => {
+describe('On the home page', () => {
 
     
 //     let homePage;
@@ -25,6 +25,6 @@ let page = new BasePage(browser, opts);
 //         await homePage.awaitH1();
 //         const innerText = await homePage.getH1Content();   
 //         assert.equal(innerText, homePage.pageH1Text);
-//     }));
+//    }));
 
-// });
+});
