@@ -11,7 +11,6 @@ after(() => {
   browser.close();
 });
 
-
 // beforeEach(() => {
 //   console.log("Before each test...");
 // });

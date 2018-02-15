@@ -22,6 +22,7 @@ describe('On the home page', () => {
         assert.equal(innerText, homePage.pageH1Text);
     }));
 
+    
 });
 
 

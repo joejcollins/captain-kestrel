@@ -3,11 +3,11 @@ class BasePage{
     constructor (browser, options) {
         this.browser = browser;
         this.options = options;
-        this.page = await this.browser.newPage(); 
+  
     };
 
     get pageUrl(){
-        return this.options.appUrl;
+        return this.options.appUrl + this.htmlPage;
     }
 
     async visit() {
