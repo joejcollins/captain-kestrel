@@ -8,6 +8,7 @@ class Menu{
         this._tab = tab;
         this.homeLinkLocator = "#wrap > nav > div > div.navbar-header > a";
         this.locationLinkLocator = "#navbar > ul > li:nth-child(1) > a";
+        this.contactLinkLocator = "#navbar > ul > li:nth-child(5) > a";
         this.footerLocator = "#footer";
     };
 
@@ -21,6 +22,12 @@ class Menu{
         await this._tab.click(this.locationLinkLocator);
         await this._tab.waitForSelector(this.footerLocator);
         return new LocationPage(this._tab);
+    }; 
+
+    async clickMenuContact() {
+        await this._tab.click(this.contactLinkLocator);
+        await this._tab.waitForSelector(this.footerLocator);
+        return new ContactPage(this._tab);
     }; 
 
 }

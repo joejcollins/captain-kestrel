@@ -4,7 +4,7 @@
   "description": "Tests for Womerton Website",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 10000 --slow 2000 ./runner.js tests/00*.js --show"
+    "test": "mocha --timeout 20000 --slow 2000 ./runner.js tests/00*.js --show"
   },
   "author": "Joe J Collins",
   "license": "MIT",

@@ -1,8 +1,10 @@
-﻿
+﻿const CommonFeatures  = require('./CommonFeatures');
 
 class ContactPage {
 
     constructor (tab) {
+        this.page = tab;
+        this.common = new CommonFeatures(tab);
         this.pageH1Text = "Send a Message";
         this.messageLocator = 'textarea[id="Message"]';
         this.messageErrorLocator = 'span[id="MessageError"]';
@@ -13,16 +15,6 @@ class ContactPage {
         this.submitButtonLocator = 'form input[type="submit"]';
     };
 
-    async awaitH1() {
-        await this.page.waitForSelector('h1');
-    };
-
-    async getH1Content() {
-        return await this.page.evaluate(() => {
-            return document.querySelector("h1").innerText;
-        });
-    };  
-
     async isMessageErrorShown() {
         var message = await this.page.evaluate((selector) => {
             return document.querySelector(selector).innerText;
@@ -31,56 +23,48 @@ class ContactPage {
         return message.includes(this.messageErrorText);
     };
 
+    async clearMessage(){
+        await this.page.evaluate((locator) => {
+            document.querySelector(locator).value = '';
+        }, this.messageLocator);
+    }
+
     async fillMessage(message) {
-        await this.clearForm();
+        this.clearMessage();
         await this.page.type(this.messageLocator, message);
     };
-
 
     async isEmailErrorShown() {
         var message = await this.page.evaluate((selector) => {
             return document.querySelector(selector).innerText;
         }, this.emailErrorLocator);
-
         return message.includes(this.emailErrorText);
     };
 
-    async clearForm() {
-        await this.page.evaluate((locator) => {
-            document.querySelector(locator).value = '';
-        }, this.messageLocator);
+    async clearEmail(){
         await this.page.evaluate((locator) => {
             document.querySelector(locator).value = '';
         }, this.emailLocator);
+    }
+
+    async fillEmail(email) {
+        await this.clearEmail();
+        await this.page.type(this.emailLocator, email);
     };
+
+    async clearForm() {
+        this.clearMessage();
+        this.clearEmail();
+    };
+
+    async fillForm(message, email){
+        this.fillMessage(message);
+        this.fillEmail(email);
+    }
 
     async submitTheForm () {
         await this.page.click(this.submitButtonLocator);
     }; 
 
-    // // Send email
-    // this.sendEmail = function (emailAddress) {
-    //     this.startOnContactPage();
-    //     this.checkPage();
-    //     this.fillForm(emailAddress);
-    //     this.submitForm();
-    //     this.checkResponsePage(emailAddress);
-    // };
-
-    // // Fill in the email box
-    // this.fillForm = function(emailAddress) {
-    //     casper.waitForSelector("form input[name='From']", function() {
-    //         casper.fillSelectors('form#Contact_Form', {
-    //             "textarea[name = Message]": 'Test message, ignore.',
-    //             "input[name = From]": emailAddress,
-    //         }, false);
-    //     });
-    // };
-
-    // this.checkResponsePage = function (emailAddress) {
-    //     casper.waitForSelector("H1", function () {
-    //         casper.test.assertTextExists('Thank you', 'Correct title on response page.');
-    //     });
-    // };
 }
 module.exports = ContactPage;
