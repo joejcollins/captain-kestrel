@@ -1,7 +1,9 @@
+const CommonFeatures  = require('./CommonFeatures');
+
 class HomePage {
 
     constructor (tab) {
-        super.htmlPage =  "/";
+        this.common = new CommonFeatures(tab);
         this.pageH1Text = "Womerton Bunkhouse";
     };
 

@@ -1,10 +1,9 @@
-const BasePage  = require('../pages/BasePage');
+const CommonFeatures  = require('./CommonFeatures');
 
-class HomePage extends BasePage {
+class LocationPage {
 
-    constructor (browser, options) {
-        super(browser, options);
-        super.htmlPage =  "/";
+    constructor (tab) {
+        this.common = new CommonFeatures(tab);
         this.pageH1Text = "";
     };
 
