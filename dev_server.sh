@@ -1,2 +1,2 @@
 # Run up the GAE development server
-python ..//google-cloud-sdk/platform/google_appengine/dev_appserver.py ./web_app/ --host=0.0.0.0  
+python dev_appserver.py ./web_app/app.yaml --host=0.0.0.0  
