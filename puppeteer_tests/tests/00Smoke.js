@@ -25,7 +25,7 @@ describe('On the landing page', () => {
 
     it('and it shows the same title after a menu click', test(async (browser, opts) => {
         this.homePage = await this.menu.clickMenuHome();
-        await this.homePage.common.awaitH1();
+        await this.homePage.common.awaitFooter();
         const innerText = await this.homePage.common.getH1Content();   
         assert.equal(innerText, this.homePage.pageH1Text);
     }));
@@ -33,11 +33,22 @@ describe('On the landing page', () => {
 
 describe('On the location page', () => {
 
-    it('there is no title', test(async (browser, opts) => {
+    it('there is a map', test(async (browser, opts) => {
         this.locationPage = await this.menu.clickMenuLocation();
-        // await this.homePage.common.awaitH1();
-        // const innerText = await this.locationPage.common.getH1Content();   
-        // assert.equal(innerText, locationPage.pageH1Text);
+
+        const newLocal = this.locationPage.page;
+        // Check for content of Iframe contains "Womerton"
+        const frames = await newLocal.frames();
+        await newLocal.evaluate(async() => { setTimeout(function(){ console.log('waiting'); }, 4000);}); 
+        await newLocal.screenshot({path: './screenshot-full.png', fullPage: true});
+        const frame = await frames.find(f => f.name() === 'googlemap');
+
+
+        //assert.con
+        //mapFrame.page
+
+        
+
     }));
 
 });

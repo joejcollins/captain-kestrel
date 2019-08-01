@@ -14,7 +14,7 @@ class CommonFeatures{
         });
     };
 
-    async awaitFooer(){
+    async awaitFooter(){
         await this.page.waitForSelector('#footer');
     }
 

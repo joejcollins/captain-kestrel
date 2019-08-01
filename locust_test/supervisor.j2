@@ -1,0 +1,13 @@
+[program:{{ node_name }}]
+{% if node_name == 'locust-master' %}
+command=locust -H {{ locust_host }} -f /etc/locust/locustfile.py LocustDelivery  --master --master-bind-host=0.0.0.0 --web-port=80
+{% endif %}
+{% if node_name == 'locust-slave' %}
+command=locust -H {{ locust_host }} -f /etc/locust/locustfile.py LocustDelivery --slave --master-host={{ locust_master }} --no-reset-stats
+{% endif %}
+directory=/etc/locust
+autostart=true
+autorestart=true
+user=root
+stderr_logfile=/var/log/locust_err.log
+stdout_logfile=/var/log/locust_out.log

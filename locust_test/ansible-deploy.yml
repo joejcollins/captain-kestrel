@@ -1,0 +1,105 @@
+---
+- hosts: localhost
+  handlers:
+
+    - name: restart supervisor
+      service:
+        name: supervisor
+        state: restarted
+      become: yes
+
+  tasks:
+
+    - command: fallocate -l 4G /swapfile
+      become: yes
+
+    - file:
+        path: /swapfile
+        mode: 600
+      become: yes
+
+    - command: mkswap /swapfile
+      become: yes
+
+    - command: swapon /swapfile
+      become: yes
+
+    - file:
+        dest: /etc/locust
+        state: directory
+      become: yes
+
+    - copy:
+        src: /home/ubuntu/locustfile.py
+        dest: /etc/locust/locustfile.py
+      become: yes
+
+    - copy:
+        src: /home/ubuntu/Pipfile
+        dest: /etc/locust/Pipfile
+      become: yes
+
+    - copy:
+        src: /home/ubuntu/Pipfile.lock
+        dest: /etc/locust/Pipfile.lock
+      become: yes
+
+    - apt_repository:
+        repo: ppa:deadsnakes/ppa
+        update_cache: yes
+      become: yes
+
+    - apt:
+        name:
+           - htop
+           - iftop
+           - iotop
+           - tmux
+           - git
+           - supervisor
+           - build-essential
+           - libzmq3-dev
+           - python3.7
+           - python3.7-dev
+      become: yes
+
+    - get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /tmp/get-pip.py
+      become: yes
+
+    - command: python3.7 /tmp/get-pip.py
+      become: yes
+
+    - file:
+        path: /tmp/get-pip.py
+        state: absent
+      become: yes
+
+    - pip:
+        name:
+          - pip
+          - pipenv
+        state: latest
+        executable: pip3.7
+      become: yes
+
+    - command: pipenv install --system --deploy
+      args:
+        chdir: /etc/locust
+      become: yes
+
+    - template:
+        src: /home/ubuntu/supervisor.j2
+        dest: /etc/supervisor/conf.d/locust-slave.conf
+      when: node_name == 'locust-slave'
+      become: yes
+      notify: restart supervisor
+
+    - template:
+        src: /home/ubuntu/supervisor.j2
+        dest: /etc/supervisor/conf.d/locust-master.conf
+      when: node_name == 'locust-master'
+      become: yes
+      notify: restart supervisor
+...
