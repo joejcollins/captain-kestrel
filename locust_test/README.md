@@ -15,27 +15,24 @@ Destroying the servers isn't strictly necessary but the price mounts up if they 
 That said, running a load test with 10 servers costs about 10p.
 
 ### Get an AWS Account and an Access Key
-
-The servers should be created using the `zengenti` AWS account,
-which will be billed for usage.
-You will need a login associated with the `zengenti` AWS account. 
-Ask one of the other AWS users (e.g. Ben, Jake or Nic) to give you an account with "Programmatic access"
+ 
+Ask one of the other AWS users to give you an account with "Programmatic access"
 and "AWS Management Console access".
 
 Go to <https://console.aws.amazon.com/iam/home#/security_credentials> and enter the account name you were given.
 This should forward you to an IAM (Identity and Access Management) login page, 
 where you can enter the `zengenti` AWS account name. 
 
-    Account: zengenti
+    Account: <your_account>
     IAM Account: <your_username>
     Password: <your_password>
 
-Then create an access key and take copy of the key ID and secret.
+Then create an access key and take copy of the key ID and secret ("Access keys for CLI, SDK, & API access").
 This will be the only opportunity to make a copy, but there is no cost to making new keys if the copy gets lost.
 The keys will look something like this.
 
-    Access key ID: ABABABABABABABABABABBAB 
-    Secret access key: CDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCD
+    Access key ID: ABABABABABABABABABABAB 
+    Secret access key: CDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCDCD
 
 Take the keys and edit the `secrets.tfvar` so it look something like this.
 
@@ -56,20 +53,21 @@ The AWS servers are created using Terraform <https://www.terraform.io/> from Has
 Download Terraform version is 0.12.5 from <https://www.terraform.io/downloads.html>.
 
 Terraform uses modules to interact with all the major cloud providers,
-to interact with AWS and create the servers we need to download these modules
+so you don't have to remember the commands specific to each of the cloud providers.
+To interact with AWS and create our servers we need to download the modules for AWS
 by running `terraform init`. 
-This will search the files for modules that are to be used.
+This will search the files for modules that are to be used and download them to a `.terraform` directory.
 
-Before you create the virtual servers you can see what Terraform would plan to do by running `terraform plan -var-file="secrets.tfvars"`
+Before you create the virtual servers you can see what Terraform would plan to do by running `terraform plan -var-file="secrets.tfvars"`.
 
-To create the virtual servers use `terraform apply` with the secret variables file like this `terraform apply -var-file="secrets.tfvars"`
+To create the virtual servers use `terraform apply` with the secret variables file like this `terraform apply -var-file="secrets.tfvars"`,
+(if you loose your nerve there is an opportunity back out during this process).
 
 Terraform should create the virtual servers.  
 As part of the process it should also create a local file `terraform.tfstate` which is used to refer the the individual instances created on AWS.
 This is important to allow for the right instances to be destroyed at the end of this test.
-Useful to destroy the right ones.
 
-The `locustfile.py` contains a script which defines the load tests to be run.
+Incidentally, the `locustfile.py` contains a script which defines the load tests to be run.
 The `terraform apply` process should deploy this file to the virtual servers and
 configure all services to support it.
 
@@ -89,6 +87,12 @@ Browsing to the public IP address of the master server should show a web page wi
 So for example, if the number of users is 1000 and the hatch rate is 10.
 Each second 10 users added to current users starting from 0 so in 100 seconds you will have 1000 users.
 When it reaches to the number of users, the statistic will be reset.
+
+To start the test click "Start swarming", the test specified in `locustfile.py` will but run with the number of users ramping up as specified in your "Hatch rate".
+
+When you are satisfied the test has run for long enough,
+stop it and examine the statistics and charts.
+This is where the real work begins so I can't help you.
 
 ### Destroy the Servers After the Test
 
