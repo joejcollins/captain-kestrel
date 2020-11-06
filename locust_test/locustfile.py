@@ -1,4 +1,4 @@
-"""Generic locustfile used to load testing Zengenti sites."""
+"""Generic locustfile used to load testing sites."""
 from locust import HttpLocust, TaskSet, task
 
 class UserBehavior(TaskSet):
