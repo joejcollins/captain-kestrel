@@ -21,7 +21,7 @@ and "AWS Management Console access".
 
 Go to <https://console.aws.amazon.com/iam/home#/security_credentials> and enter the account name you were given.
 This should forward you to an IAM (Identity and Access Management) login page, 
-where you can enter the `zengenti` AWS account name. 
+where you can enter the `company` AWS account name. 
 
     Account: <your_account>
     IAM Account: <your_username>
